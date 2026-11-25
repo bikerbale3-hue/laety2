@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Site pour ma Laety ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Fond -->
+    <div class="background"></div>
+    <div class="overlay"></div>
+
+    <!-- Étoiles -->
+    <div id="stars"></div>
+
+    <!-- Contenu -->
+    <main class="container">
+
+        <header class="hero">
+            <h1>Site pour ma Laety ❤️</h1>
+
+            <p>
+                Une petite collection de chansons
+                rien que pour toi ✨
+            </p>
+        </header>
+
+
+        <!-- MUSIQUES -->
+        <section class="music-section">
+
+            <h2>🎵 Mes chansons pour toi</h2>
+
+            <div class="music-card" id="valentineCard">
+
+                <div class="music-info">
+                    <h3>Valentine</h3>
+                    <p>Andy Bumuntu</p>
+                </div>
+
+                <button id="playButton">
+                    ▶ Écouter
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAROLES -->
+        <section class="lyrics-section">
+
+            <h2>💖 Paroles</h2>
+
+            <div id="songTitle" class="song-title">
+                Valentine — Andy Bumuntu
+            </div>
+
+            <div id="lyrics">
+                <p class="loading">
+                    Les paroles vont apparaître ici...
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- LECTEUR -->
+    <div class="player">
+
+        <div class="player-info">
+            <strong>Valentine</strong>
+            <span>Andy Bumuntu</span>
+        </div>
+
+        <audio id="audio" controls preload="metadata">
+            <source src="assets/music/valentine.mp4" type="audio/mpeg">
+            Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

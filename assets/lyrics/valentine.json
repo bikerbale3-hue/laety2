@@ -1,0 +1,67 @@
+{
+    "titre": "Valentine",
+    "artiste": "Andy Bumuntu",
+    "langue": "Français",
+    "paroles": [
+        {
+            "time": 0,
+            "text": "Je te regarde."
+        },
+        {
+            "time": 10,
+            "text": "Je me souviens du jour où tu as dit au revoir à ton père."
+        },
+        {
+            "time": 20,
+            "text": "Il m’a dit : prends soin de mon enfant."
+        },
+        {
+            "time": 30,
+            "text": "Je promets devant Dieu."
+        },
+        {
+            "time": 40,
+            "text": "Je t’aimerai plus que tu ne t’aimes toi-même."
+        },
+        {
+            "time": 50,
+            "text": "Je t’aimerai pour toujours."
+        },
+        {
+            "time": 60,
+            "text": "Rien ne sera plus important que toi."
+        },
+        {
+            "time": 70,
+            "text": "Tu seras toujours ma Valentine."
+        },
+        {
+            "time": 80,
+            "text": "Je jure que des larmes ne couleront pas sur tes joues."
+        },
+        {
+            "time": 90,
+            "text": "Et si elles doivent couler, ce seront des larmes de joie."
+        },
+        {
+            "time": 100,
+            "text": "N’aie pas peur."
+        },
+        {
+            "time": 110,
+            "text": "Quand tu souris, mon cœur s’emballe."
+        },
+        {
+            "time": 120,
+            "text": "Je t’aimerai sans rien attendre de toi."
+        },
+        {
+            "time": 130,
+            "text": "Je t’aimerai sincèrement."
+        },
+        {
+            "time": 140,
+            "text": "Je t’aimerai aussi en pensant à nos enfants."
+        }
+    ]
+}
