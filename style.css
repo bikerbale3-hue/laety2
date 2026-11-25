@@ -398,3 +398,236 @@ audio {
         min-width: 0;
     }
 }
+
+/* FENÊTRE FLOTTANTE */
+
+.story-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+
+    background: rgba(5, 4, 25, 0.92);
+    backdrop-filter: blur(12px);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.story-overlay.open {
+    display: flex;
+    animation: fadeIn 0.5s ease;
+}
+
+/* CONTENU DE LA FENÊTRE */
+
+.story-box {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    margin: auto;
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(34, 22, 75, 0.98),
+        rgba(12, 12, 42, 0.98)
+    );
+
+    border: 1px solid rgba(255, 130, 210, 0.6);
+
+    box-shadow:
+        0 0 30px rgba(255, 70, 170, 0.35),
+        0 0 80px rgba(168, 85, 247, 0.2);
+}
+
+.story-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(5, 4, 25, 0.88);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.story-overlay.open {
+  display: flex;
+  animation: dialogFade .3s ease;
+}
+
+@keyframes dialogFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dialog-box {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 18px;
+  border-radius: 22px;
+  color: white;
+  background: linear-gradient(145deg, #211943, #10102e);
+  border: 1px solid rgba(255, 130, 210, .5);
+  box-shadow: 0 0 35px rgba(190, 80, 220, .25);
+}
+
+.close-dialog {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.dialog-header strong,
+.dialog-header small {
+  display: block;
+}
+
+.dialog-header small {
+  margin-top: 4px;
+  color: #c9bce8;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #49316e;
+  font-size: 22px;
+}
+
+.night-scene {
+  position: relative;
+  min-height: 115px;
+  margin: 15px 0;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at bottom, #44336e, #11132f 75%);
+}
+
+.moon {
+  font-size: 35px;
+  animation: moonGlow 3s infinite alternate;
+}
+
+@keyframes moonGlow {
+  from { filter: drop-shadow(0 0 4px #fff); }
+  to { filter: drop-shadow(0 0 15px #f9b9ff); }
+}
+
+.stars {
+  color: #ffe8ff;
+  letter-spacing: 5px;
+  margin-top: 5px;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+
+.couple-caption {
+  margin-top: 8px;
+  color: #e7d9ff;
+  font-size: 12px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 75px;
+  padding: 8px 0 18px;
+}
+
+.chat-bubble {
+  max-width: 88%;
+  padding: 12px 15px;
+  border-radius: 16px;
+  line-height: 1.5;
+  font-size: 14px;
+  animation: bubbleIn .35s ease;
+}
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-bubble.mine {
+  align-self: flex-start;
+  background: #49346e;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-bubble.theirs {
+  align-self: flex-end;
+  background: #a43d87;
+  border-bottom-right-radius: 4px;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+#nextMessage,
+.whatsapp-button {
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 13px;
+  background: linear-gradient(90deg, #ed6bb5, #9c68e8);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+#nextMessage:hover,
+.whatsapp-button:hover {
+  filter: brightness(1.12);
+}
+
+.whatsapp-button[hidden] {
+  display: none;
+}

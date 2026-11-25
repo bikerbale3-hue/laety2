@@ -1,30 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Site pour ma Laety ❤️</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- ARRIERE-PLAN -->
     <div class="background"></div>
     <div class="overlay"></div>
     <div id="stars"></div>
 
+    <!-- CONTENU PRINCIPAL -->
     <main class="container">
 
+        <!-- PRESENTATION -->
         <header class="hero">
             <h1>Site pour ma Laety ❤️</h1>
             <p>Quelques mélodies, beaucoup d'émotions... ✨</p>
         </header>
 
+        <!-- PLAYLIST -->
         <section class="music-section">
+
             <h2>🎵 Mes chansons pour toi</h2>
+
             <div id="playlist"></div>
+
         </section>
 
+        <!-- PAROLES -->
         <section class="lyrics-section">
+
             <h2>💖 Paroles de la chanson</h2>
 
             <div id="songTitle" class="song-title">
@@ -32,23 +45,156 @@
             </div>
 
             <div id="lyrics">
+
                 <p class="loading">
                     Sélectionne une chanson pour découvrir ses paroles.
                 </p>
+
             </div>
+
         </section>
+
+        <!-- BOUTON SECRET -->
+        <div class="secret-button-container">
+
+            <button
+                id="openStory"
+                class="secret-button"
+                type="button"
+            >
+                ❤️ Viens que je te dise un truc…
+            </button>
+
+        </div>
 
     </main>
 
+
+    <!-- LECTEUR AUDIO FIXE -->
     <div class="player">
+
         <div class="player-info">
-            <strong id="playerTitle">Aucune chanson</strong>
-            <span id="playerArtist">Choisis une musique</span>
+
+            <strong id="playerTitle">
+                Aucune chanson
+            </strong>
+
+            <span id="playerArtist">
+                Choisis une musique
+            </span>
+
         </div>
 
-        <audio id="audio" controls preload="metadata"></audio>
+        <audio
+            id="audio"
+            controls
+            preload="metadata"
+        ></audio>
+
     </div>
 
+
+    <!-- =====================================
+         SCENE SECRETE POUR LAETY
+    ====================================== -->
+
+
+<div id="storyOverlay" class="story-overlay" aria-hidden="true">
+
+  <div class="dialog-box">
+
+    <button id="closeStory" class="close-dialog" type="button">✕</button>
+
+    <div class="dialog-header">
+      <div class="avatar">❤️</div>
+      <div>
+        <strong>Une petite conversation</strong>
+        <small>Toi et Laety ✨</small>
+      </div>
+    </div>
+
+    <!-- SCENE AVEC LES DEUX PERSONNAGES -->
+
+    <div class="night-scene">
+
+      <div class="night-moon">🌙</div>
+
+      <div class="night-stars">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+        <span>✦</span>
+      </div>
+
+      <div class="hill"></div>
+
+      <div class="couple-2d">
+
+        <!-- GARÇON -->
+
+        <div class="character boy">
+          <div class="boy-hair"></div>
+          <div class="boy-head"></div>
+          <div class="boy-neck"></div>
+          <div class="boy-body"></div>
+          <div class="boy-arm"></div>
+          <div class="boy-legs"></div>
+        </div>
+
+        <!-- FILLE -->
+
+        <div class="character girl">
+          <div class="girl-hair"></div>
+          <div class="girl-head"></div>
+          <div class="girl-neck"></div>
+          <div class="girl-body"></div>
+          <div class="girl-arm"></div>
+          <div class="girl-legs"></div>
+        </div>
+
+      </div>
+
+      <div class="couple-caption">
+        Deux personnes, un ciel rempli d'étoiles… ❤️
+      </div>
+
+    </div>
+
+    <!-- CONVERSATION -->
+
+    <div id="chatMessages" class="chat-messages">
+      <div class="chat-bubble mine">
+        Laety… tu sais pourquoi j'ai créé ce site ?
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+
+      <button id="nextMessage" type="button">
+        Pourquoi ? 👀
+      </button>
+
+      <a id="whatsappButton"
+         class="whatsapp-button"
+         href="#"
+         target="_blank"
+         rel="noopener"
+         hidden>
+        💬 Je veux quand même lui répondre
+      </a>
+
+    </div>
+
+  </div>
+</div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
+
 </body>
 </html>
