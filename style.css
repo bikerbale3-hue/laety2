@@ -631,3 +631,46 @@ audio {
 .whatsapp-button[hidden] {
   display: none;
 }
+/* Bouton de la conversation secrète : affichage mobile */
+.secret-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    max-width: 350px;
+    min-height: 55px;
+
+    margin: 25px auto;
+    padding: 14px 20px;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, #7138b8, #d94f9d);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+
+    cursor: pointer;
+    position: relative;
+    z-index: 20;
+
+    box-sizing: border-box;
+}
+
+/* Adaptation aux petits écrans */
+@media screen and (max-width: 600px) {
+    .secret-button {
+        width: 92%;
+        max-width: 320px;
+        min-height: 52px;
+
+        font-size: 14px;
+        padding: 12px 15px;
+
+        margin: 20px auto;
+    }
+}
