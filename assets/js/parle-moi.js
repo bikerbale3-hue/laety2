@@ -1,142 +1,245 @@
 
 /* =========================================
-   PARLE-MOI SI... — INTERACTIONS
+   PARLE-MOI SI... — WHATSAPP & MUSIQUE
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Les blocs de conversation
-    const conversationCards = document.querySelectorAll(
-        ".conversation-card"
-    );
+    // =========================================
+    // NUMÉROS WHATSAPP
+    // =========================================
 
-    // La fenêtre de discussion
-    const chatModal = document.getElementById("chatModal");
-
-    // Les éléments du chat
-    const chatTitle = document.getElementById("chatTitle");
-    const chatSubtitle = document.getElementById("chatSubtitle");
-    const welcomeMessage = document.getElementById("welcomeMessage");
-
-    const chatMessages = document.getElementById("chatMessages");
-    const chatForm = document.getElementById("chatForm");
-    const messageInput = document.getElementById("messageInput");
-
-    const closeChatButton = document.getElementById("closeChat");
+    const whatsappDaddy = "243995121796";
+    const whatsappLaety = "243974130216";
 
 
     // =========================================
-    // TEXTES DES CONVERSATIONS
+    // SECTIONS DE LA PAGE
     // =========================================
 
     const conversations = {
 
         epaule: {
-            title: "Une épaule",
-            subtitle: "Un petit moment de douceur",
-            welcome: "Tu peux tout me dire. Je suis là."
+            title: "Besoin d'une épaule",
+            message: "J'avais besoin d'une épaule."
         },
 
         secret: {
-            title: "Un secret",
-            subtitle: "Un petit secret entre nous",
-            welcome: "Il y a des choses qu'on ne dit qu'à certaines personnes..."
+            title: "Un secret à partager",
+            message: "J'ai un petit secret à te confier..."
         },
 
         douceur: {
             title: "Un peu de douceur",
-            subtitle: "Une conversation tendre",
-            welcome: "Et si on se disait de jolies choses ?"
+            message: "J'avais envie d'un peu de douceur."
         },
 
         mood: {
             title: "Dans le mood",
-            subtitle: "Laisse parler ton humeur",
-            welcome: "Alors, quelle est ton énergie du moment ?"
+            message: "Je suis dans le mood..."
         },
 
         conversation: {
-            title: "Juste parler",
-            subtitle: "Sans raison particulière",
-            welcome: "Je t'écoute. Raconte-moi."
+            title: "Envie de parler",
+            message: "J'avais simplement envie de te parler."
         }
 
     };
 
 
     // =========================================
-    // OUVRIR UNE CONVERSATION
+    // ÉLÉMENTS DE LA PAGE
     // =========================================
 
-    function openChat(conversationKey) {
+    const conversationCards = document.querySelectorAll(
+        ".conversation-card"
+    );
 
-        const conversation = conversations[conversationKey];
+    let selectedConversation = null;
 
-        if (!conversation) {
+
+    // =========================================
+    // CRÉER LA PETITE FENÊTRE
+    // =========================================
+
+    const recipientModal = document.createElement("div");
+
+    recipientModal.className = "recipient-modal";
+    recipientModal.setAttribute("aria-hidden", "true");
+
+    recipientModal.innerHTML = `
+        <div class="recipient-modal-content" role="dialog"
+             aria-modal="true" aria-labelledby="recipientTitle">
+
+            <button class="recipient-close"
+                    type="button"
+                    aria-label="Fermer">
+                &times;
+            </button>
+
+            <span class="recipient-heart">♡</span>
+
+            <h2 id="recipientTitle">
+                À qui veux-tu parler ?
+            </h2>
+
+            <p class="recipient-section"></p>
+
+            <div class="recipient-buttons">
+
+                <button type="button"
+                        class="recipient-choice"
+                        data-recipient="daddy">
+                    ♡ Signaler à Daddy
+                </button>
+
+                <button type="button"
+                        class="recipient-choice"
+                        data-recipient="laety">
+                    ♡ Signaler à Laety
+                </button>
+
+            </div>
+
+            <p class="recipient-note">
+                Une petite envie de parler...
+            </p>
+
+        </div>
+    `;
+
+    document.body.appendChild(recipientModal);
+
+
+    // =========================================
+    // ÉLÉMENTS DE LA FENÊTRE
+    // =========================================
+
+    const recipientSection = recipientModal.querySelector(
+        ".recipient-section"
+    );
+
+    const recipientButtons = recipientModal.querySelectorAll(
+        ".recipient-choice"
+    );
+
+    const recipientClose = recipientModal.querySelector(
+        ".recipient-close"
+    );
+
+
+    // =========================================
+    // OUVRIR LA FENÊTRE
+    // =========================================
+
+    function openRecipientModal(conversationKey) {
+
+        selectedConversation = conversations[conversationKey];
+
+        if (!selectedConversation) {
             return;
         }
 
-        // Modifier le titre et les textes
-        chatTitle.textContent = conversation.title;
-        chatSubtitle.textContent = conversation.subtitle;
-        welcomeMessage.textContent = conversation.welcome;
+        recipientSection.textContent =
+            `Section : ${selectedConversation.title}`;
 
-        // Réinitialiser les messages précédents
-        chatMessages.innerHTML = `
-            <div class="chat-welcome">
-                <span class="welcome-heart">♡</span>
-                <p id="welcomeMessage">
-                    ${conversation.welcome}
-                </p>
-            </div>
-        `;
+        recipientModal.classList.add("active");
 
-        // Afficher la fenêtre
-        chatModal.classList.add("active");
-        chatModal.setAttribute("aria-hidden", "false");
+        recipientModal.setAttribute("aria-hidden", "false");
 
-        // Empêcher le défilement de la page derrière
         document.body.style.overflow = "hidden";
-
-        // Placer le curseur dans le champ
-        setTimeout(() => {
-            messageInput.focus();
-        }, 300);
     }
 
 
     // =========================================
-    // FERMER LA CONVERSATION
+    // FERMER LA FENÊTRE
     // =========================================
 
-    function closeChat() {
+    function closeRecipientModal() {
 
-        // Fermer la fenêtre
-        chatModal.classList.remove("active");
-        chatModal.setAttribute("aria-hidden", "true");
+        recipientModal.classList.remove("active");
 
-        // Réautoriser le défilement
+        recipientModal.setAttribute("aria-hidden", "true");
+
         document.body.style.overflow = "";
 
-        // Effacer tous les messages de cette session
-        chatMessages.innerHTML = "";
-
-        // Vider le champ de saisie
-        messageInput.value = "";
+        selectedConversation = null;
     }
 
 
     // =========================================
-    // CLIC SUR LES BLOCS
+    // OUVRIR WHATSAPP
+    // =========================================
+
+    function openWhatsApp(recipient) {
+
+        if (!selectedConversation) {
+            return;
+        }
+
+        let phoneNumber = "";
+        let recipientName = "";
+
+        if (recipient === "daddy") {
+
+            phoneNumber = whatsappDaddy;
+            recipientName = "Daddy";
+
+        } else if (recipient === "laety") {
+
+            phoneNumber = whatsappLaety;
+            recipientName = "Laety";
+
+        } else {
+            return;
+        }
+
+
+        // Message personnalisé selon la section
+
+        const message =
+            `Coucou ${recipientName} ❤️\n\n` +
+            `Je viens de ta page "Parle-moi si...".\n\n` +
+            `Section : ${selectedConversation.title}\n\n` +
+            `${selectedConversation.message}\n\n` +
+            `♡`;
+
+
+        // Préparer le lien WhatsApp
+
+        const whatsappURL =
+            `https://wa.me/${phoneNumber}?text=` +
+            encodeURIComponent(message);
+
+
+        // Fermer la petite fenêtre
+
+        closeRecipientModal();
+
+
+        // Ouvrir WhatsApp
+
+        window.open(
+            whatsappURL,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    }
+
+
+    // =========================================
+    // CLIC SUR LES IMAGES
     // =========================================
 
     conversationCards.forEach(card => {
 
         card.addEventListener("click", () => {
 
-            const conversationKey = card.dataset.conversation;
+            const conversationKey =
+                card.dataset.conversation;
 
-            openChat(conversationKey);
+            openRecipientModal(conversationKey);
 
         });
 
@@ -144,126 +247,139 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================
-    // BOUTON DE FERMETURE
+    // CHOIX DU DESTINATAIRE
     // =========================================
 
-    closeChatButton.addEventListener("click", closeChat);
+    recipientButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const recipient =
+                button.dataset.recipient;
+
+            openWhatsApp(recipient);
+
+        });
+
+    });
 
 
     // =========================================
-    // CLIC SUR LE FOND POUR FERMER
+    // BOUTON FERMER
     // =========================================
 
-    chatModal.addEventListener("click", event => {
+    recipientClose.addEventListener(
+        "click",
+        closeRecipientModal
+    );
 
-        if (event.target === chatModal) {
-            closeChat();
+
+    // =========================================
+    // CLIC SUR LE FOND
+    // =========================================
+
+    recipientModal.addEventListener("click", event => {
+
+        if (event.target === recipientModal) {
+            closeRecipientModal();
         }
 
     });
 
 
     // =========================================
-    // FERMER AVEC LA TOUCHE ÉCHAP
+    // TOUCHE ÉCHAP
     // =========================================
 
     document.addEventListener("keydown", event => {
 
         if (
             event.key === "Escape" &&
-            chatModal.classList.contains("active")
+            recipientModal.classList.contains("active")
         ) {
-            closeChat();
+            closeRecipientModal();
         }
 
     });
 
 
     // =========================================
-    // ENVOYER UN MESSAGE
+    // MUSIQUE DE FOND MP4
     // =========================================
 
-    chatForm.addEventListener("submit", event => {
+    const backgroundMusic =
+        document.getElementById("background-music");
 
-        event.preventDefault();
+    const musicButton =
+        document.getElementById("music-button");
 
-        const messageText = messageInput.value.trim();
+    let musicPlaying = false;
 
-        // Ne rien envoyer si le champ est vide
-        if (messageText === "") {
-            return;
-        }
 
-        // Créer le message
-        const message = document.createElement("div");
+    if (backgroundMusic && musicButton) {
 
-        message.classList.add("message", "sent");
+        musicButton.addEventListener("click", async () => {
 
-        // Ajouter le texte sans interpréter le HTML
-        const text = document.createElement("span");
-        text.textContent = messageText;
+            if (!musicPlaying) {
 
-        // Ajouter l'heure
-        const time = document.createElement("span");
-        time.classList.add("message-time");
+                try {
 
-        time.textContent = new Date().toLocaleTimeString(
-            "fr-FR",
-            {
-                hour: "2-digit",
-                minute: "2-digit"
+                    await backgroundMusic.play();
+
+                    musicPlaying = true;
+
+                    musicButton.classList.add("playing");
+
+                    musicButton.setAttribute(
+                        "aria-label",
+                        "Désactiver la musique"
+                    );
+
+                } catch (error) {
+
+                    console.log(
+                        "La musique n'a pas pu démarrer.",
+                        error
+                    );
+
+                }
+
+            } else {
+
+                backgroundMusic.pause();
+
+                musicPlaying = false;
+
+                musicButton.classList.remove("playing");
+
+                musicButton.setAttribute(
+                    "aria-label",
+                    "Activer la musique"
+                );
+
             }
-        );
 
-        message.appendChild(text);
-        message.appendChild(time);
-
-        // Afficher le message
-        chatMessages.appendChild(message);
-
-        // Faire défiler vers le dernier message
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // Vider le champ
-        messageInput.value = "";
-        messageInput.focus();
-
-    });
+        });
 
 
-    // =========================================
-    // NETTOYAGE SI LA PAGE EST QUITTÉE
-    // =========================================
+        // Si la musique se termine ou est arrêtée
 
-    window.addEventListener("pagehide", () => {
+        backgroundMusic.addEventListener("pause", () => {
 
-        chatMessages.innerHTML = "";
-        messageInput.value = "";
+            musicPlaying = false;
 
-    });
+            musicButton.classList.remove("playing");
 
-});
-const backgroundMusic = document.getElementById("background-music");
-const musicButton = document.getElementById("music-button");
+        });
 
-let musicPlaying = false;
-
-musicButton.addEventListener("click", async () => {
-    if (!musicPlaying) {
-        try {
-            await backgroundMusic.play();
+        backgroundMusic.addEventListener("play", () => {
 
             musicPlaying = true;
-            musicButton.classList.add("playing");
-            musicButton.textContent = "♫";
-        } catch (error) {
-            console.log("La musique n'a pas pu démarrer.");
-        }
-    } else {
-        backgroundMusic.pause();
 
-        musicPlaying = false;
-        musicButton.classList.remove("playing");
-        musicButton.textContent = "♫";
+            musicButton.classList.add("playing");
+
+        });
+
     }
+
 });
