@@ -1,9 +1,25 @@
 "use strict";
 
 const songs = [
-  { id: "valentine", title: "Valentine", artist: "Andy Bumuntu", audio: "assets/music/valentine.mp4", lyrics: "assets/lyrics/valentine.json" },
-  { id: "lento", title: "Lento", artist: "Daniel Santacruz", audio: "assets/music/lento.mp4", lyrics: "assets/lyrics/lento.json" }
-];
+  { id: "valentine",
+  title: "Valentine",
+  artist: "Andy Bumuntu",
+  audio: "assets/music/valentine.mp4",
+  lyrics: "assets/lyrics/valentine.json" },
+
+
+  { id: "lento",
+  title: "Lento",
+  artist: "Daniel Santacruz",
+  audio: "assets/music/lento.mp4",
+  lyrics: "assets/lyrics/lento.json" },
+
+  {id: "colorado",
+  title: "Colorado",
+  artist: "Zugo",
+  audio: "assets/music/colorado.mp4",
+  lyrics: "assets/lyrics/colorado.json"
+}];
 
 // Conserve ici le numéro WhatsApp déjà configuré dans ton projet.
 const WHATSAPP_NUMBER = "243995121796";
