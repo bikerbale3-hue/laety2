@@ -1,0 +1,963 @@
+
+/* =========================================
+   PARLE-MOI SI...
+   DARK ROMANTIC EDITION
+========================================= */
+
+:root {
+    --color-bg: #0b090c;
+    --color-surface: #151116;
+    --color-surface-light: #201820;
+
+    --color-text: #f0e8ed;
+    --color-muted: #9b8997;
+
+    --color-accent: #a65b78;
+    --color-accent-light: #d49aaf;
+    --color-burgundy: #541d35;
+
+    --color-border: rgba(210, 160, 185, 0.12);
+
+    --font-title: "Playfair Display", serif;
+    --font-body: "DM Sans", sans-serif;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   EN-TÊTE
+========================================= */
+
+.page-header {
+    padding: 35px 8% 75px;
+    position: relative;
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-muted);
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--color-accent-light);
+}
+
+.header-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 80px auto 0;
+}
+
+.eyebrow {
+    color: var(--color-accent-light);
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.header-content h1 {
+    font-family: var(--font-title);
+    font-size: clamp(48px, 8vw, 100px);
+    font-weight: 400;
+    margin: 25px 0;
+    letter-spacing: -2px;
+}
+
+.header-content h1 em {
+    color: var(--color-accent-light);
+    font-style: italic;
+}
+
+.header-description {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 2;
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   CONTENU PRINCIPAL
+========================================= */
+
+.main-content {
+    padding: 0 8% 110px;
+}
+
+.conversation-section {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.section-heading h2 {
+    font-family: var(--font-title);
+    font-size: clamp(27px, 4vw, 42px);
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   GRILLE DES BLOCS
+========================================= */
+
+.conversation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.conversation-card {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    min-height: 380px;
+
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+
+    overflow: hidden;
+    text-align: left;
+    color: white;
+
+    background: var(--color-surface);
+
+    isolation: isolate;
+
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.conversation-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(190, 110, 150, 0.3);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(120, 40, 80, 0.08);
+}
+
+.card-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -2;
+
+    filter: brightness(0.65) saturate(0.75);
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+.conversation-card:hover .card-image {
+    transform: scale(1.07);
+    filter: brightness(0.8) saturate(0.9);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(8, 5, 10, 0.96) 0%,
+        rgba(8, 5, 10, 0.45) 50%,
+        rgba(8, 5, 10, 0.12) 100%
+    );
+
+    z-index: -1;
+}
+
+.card-content {
+    position: absolute;
+    inset: auto 27px 28px;
+}
+
+.card-number {
+    display: block;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+
+    color: var(--color-accent-light);
+    opacity: 0.8;
+
+    margin-bottom: 15px;
+}
+
+.card-content h3 {
+    font-family: var(--font-title);
+    font-size: 26px;
+    font-weight: 400;
+
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.card-action {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    color: var(--color-accent-light);
+
+    border-bottom: 1px solid rgba(212, 154, 175, 0.4);
+    padding-bottom: 6px;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.conversation-card:hover .card-action {
+    color: white;
+    border-color: white;
+}
+
+
+/* =========================================
+   FENÊTRE DE CONVERSATION
+========================================= */
+
+.chat-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(3, 2, 5, 0.82);
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.chat-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.chat-window {
+    width: 100%;
+    max-width: 480px;
+
+    height: min(650px, 90vh);
+
+    display: flex;
+    flex-direction: column;
+
+    background: #100c12;
+
+    border: 1px solid rgba(190, 110, 150, 0.15);
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(100, 30, 70, 0.08);
+
+    transform: translateY(20px);
+
+    transition: transform 0.35s ease;
+}
+
+.chat-modal.active .chat-window {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   EN-TÊTE DU CHAT
+========================================= */
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 22px;
+
+    background: #151016;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.chat-status {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--color-accent-light);
+
+    box-shadow: 0 0 12px rgba(212, 154, 175, 0.5);
+}
+
+.chat-header h2 {
+    font-family: var(--font-title);
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.chat-header p {
+    color: var(--color-muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.close-chat {
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+
+    background: #211821;
+    color: var(--color-accent-light);
+
+    font-size: 24px;
+    line-height: 1;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.close-chat:hover {
+    background: var(--color-burgundy);
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   ZONE DES MESSAGES
+========================================= */
+
+.chat-messages {
+    flex: 1;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    padding: 23px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(80, 35, 65, 0.08),
+            transparent 60%
+        ),
+        #100c12;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #493040;
+    border-radius: 10px;
+}
+
+.chat-welcome {
+    text-align: center;
+    margin: auto 0;
+
+    color: var(--color-muted);
+}
+
+.welcome-heart {
+    display: block;
+
+    font-size: 38px;
+    color: var(--color-accent-light);
+
+    margin-bottom: 15px;
+
+    animation: heartGlow 3s ease-in-out infinite;
+}
+
+.chat-welcome p {
+    font-family: var(--font-title);
+    font-size: 19px;
+    font-style: italic;
+}
+
+
+/* =========================================
+   BULLES DE MESSAGES
+========================================= */
+
+.message {
+    max-width: 82%;
+
+    padding: 13px 16px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+.message.sent {
+    align-self: flex-end;
+
+    background: linear-gradient(
+        135deg,
+        #572c45,
+        #382033
+    );
+
+    color: #f4e8ef;
+
+    border: 1px solid rgba(210, 150, 180, 0.1);
+
+    border-bottom-right-radius: 3px;
+}
+
+.message-time {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.45);
+
+    text-align: right;
+}
+
+
+/* =========================================
+   FORMULAIRE D'ENVOI
+========================================= */
+
+.chat-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 16px 20px;
+
+    background: #151016;
+
+    border-top: 1px solid var(--color-border);
+}
+
+.chat-form input {
+    flex: 1;
+    min-width: 0;
+
+    border: 1px solid #302330;
+    outline: none;
+
+    border-radius: 30px;
+
+    padding: 14px 17px;
+
+    background: #211821;
+    color: var(--color-text);
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.chat-form input:focus {
+    border-color: var(--color-accent);
+
+    box-shadow:
+        0 0 0 3px rgba(166, 91, 120, 0.08);
+}
+
+.chat-form input::placeholder {
+    color: #796775;
+}
+
+.send-button {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--color-accent);
+    color: white;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 0 20px rgba(166, 91, 120, 0.15);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.send-button:hover {
+    background: #c17a96;
+    transform: scale(1.07);
+}
+
+.chat-notice {
+    text-align: center;
+
+    color: #766574;
+
+    font-size: 10px;
+
+    padding: 0 15px 16px;
+
+    background: #151016;
+}
+
+
+/* =========================================
+   PIED DE PAGE
+========================================= */
+
+.page-footer {
+    text-align: center;
+
+    padding: 40px 20px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+.page-footer p {
+    font-family: var(--font-title);
+    font-style: italic;
+
+    color: var(--color-muted);
+    font-size: 16px;
+}
+
+.page-footer span {
+    display: block;
+
+    margin-top: 13px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: #665565;
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes heartGlow {
+    0%, 100% {
+        opacity: 0.65;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+
+/* =========================================
+   TABLETTES
+========================================= */
+
+@media (max-width: 900px) {
+    .conversation-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .conversation-card {
+        min-height: 340px;
+    }
+}
+
+
+/* =========================================
+   MOBILES
+========================================= */
+
+@media (max-width: 560px) {
+    .page-header {
+        padding: 25px 6% 50px;
+    }
+
+    .header-content {
+        margin-top: 55px;
+    }
+
+    .header-description {
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 0 6% 70px;
+    }
+
+    .conversation-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .conversation-card {
+        min-height: 320px;
+    }
+
+    .chat-modal {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .chat-window {
+        max-width: none;
+        height: 92vh;
+
+        border-radius: 16px 16px 0 0;
+    }
+
+    .chat-header {
+        padding: 18px;
+    }
+
+    .chat-messages {
+        padding: 18px;
+    }
+}
+body {
+    background:
+        linear-gradient(
+            rgba(10, 7, 12, 0.72),
+            rgba(10, 7, 12, 0.90)
+        ),
+        url("../images/parle-moi/background-laety.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    background-color: #100b12;
+}
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        background-position: center;
+    }
+}
+.music-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(201, 135, 165, 0.4);
+    border-radius: 50%;
+
+    background: rgba(20, 12, 22, 0.85);
+    color: #d9a4bd;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.music-button:hover,
+.music-button.playing {
+    background: #421d32;
+    box-shadow: 0 0 20px rgba(190, 100, 150, 0.3);
+    transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+    .music-button {
+        width: 44px;
+        height: 44px;
+        bottom: 18px;
+        right: 18px;
+    }
+}
+
+/* =========================================
+   PETITE FENÊTRE : À QUI VEUX-TU PARLER ?
+========================================= */
+
+.recipient-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(5, 3, 8, 0.85);
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.35s ease,
+                visibility 0.35s ease;
+}
+
+.recipient-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Contenu de la fenêtre */
+
+.recipient-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+
+    padding: 40px 28px 30px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        #251722,
+        #100c13
+    );
+
+    border: 1px solid rgba(190, 110, 150, 0.25);
+    border-radius: 15px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.7),
+        0 0 35px rgba(150, 50, 100, 0.12);
+
+    transform: translateY(20px) scale(0.96);
+    transition: transform 0.35s ease;
+}
+
+.recipient-modal.active .recipient-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+/* Bouton fermer */
+
+.recipient-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid rgba(190, 110, 150, 0.25);
+    border-radius: 50%;
+
+    background: transparent;
+    color: #d9a6c1;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.recipient-close:hover {
+    background: #6b244b;
+    transform: rotate(90deg);
+}
+
+/* Petit cœur */
+
+.recipient-heart {
+    display: block;
+    margin-bottom: 15px;
+
+    color: #d9a6c1;
+    font-size: 36px;
+
+    animation: heartGlow 3s ease-in-out infinite;
+}
+
+/* Question */
+
+.recipient-modal-content h2 {
+    color: #f5e8ef;
+    font-family: var(--font-title);
+    font-size: 26px;
+    font-weight: 400;
+
+    margin-bottom: 12px;
+}
+
+/* Texte de la section choisie */
+
+.recipient-section {
+    color: #a995a7;
+    font-size: 12px;
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+/* Boutons */
+
+.recipient-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.recipient-choice {
+    width: 100%;
+    padding: 15px;
+
+    border: 1px solid rgba(190, 110, 150, 0.3);
+    border-radius: 6px;
+
+    background: rgba(45, 28, 43, 0.8);
+    color: #d9a6c1;
+
+    font-size: 13px;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.recipient-choice:hover {
+    background: #6b244b;
+    border-color: #d9a6c1;
+    color: #fff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(100, 30, 70, 0.25);
+}
+
+/* Petit texte en bas */
+
+.recipient-note {
+    margin-top: 22px;
+
+    color: #796775;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* Adaptation téléphone */
+
+@media (max-width: 480px) {
+    .recipient-modal {
+        padding: 18px;
+    }
+
+    .recipient-modal-content {
+        padding: 38px 22px 28px;
+    }
+
+    .recipient-modal-content h2 {
+        font-size: 23px;
+    }
+
+    .recipient-choice {
+        padding: 16px;
+        font-size: 12px;
+    }
+}
