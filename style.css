@@ -674,3 +674,55 @@ audio {
         margin: 20px auto;
     }
 }
+
+/* =========================================
+   BOUTON PARLE-MOI SI...
+========================================= */
+
+.parle-moi-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    padding: 14px 25px;
+
+    background: rgba(25, 16, 24, 0.85);
+    color: #e8c5d4;
+
+    border: 1px solid rgba(190, 110, 150, 0.3);
+    border-radius: 3px;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+
+    transition: all 0.4s ease;
+}
+
+.parle-moi-button:hover {
+    background: #421d32;
+    border-color: #b77b98;
+    color: #ffffff;
+
+    box-shadow: 0 0 25px rgba(150, 65, 110, 0.18);
+
+    transform: translateY(-3px);
+}
+
+.button-heart {
+    font-size: 20px;
+    color: #c987a5;
+}
+
+.button-arrow {
+    font-size: 14px;
+    opacity: 0.7;
+
+    transition: transform 0.3s ease;
+}
+
+.parle-moi-button:hover .button-arrow {
+    transform: translate(3px, -3px);
+}

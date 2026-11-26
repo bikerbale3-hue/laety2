@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Parle-moi si... | Laety</title>
+
+    <!-- Icône du site -->
+    <link rel="icon" href="assets/images/laety.jpg">
+
+    <!-- Police Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS de la page -->
+    <link rel="stylesheet" href="assets/css/parle-moi.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         EN-TÊTE DE LA PAGE
+    ========================== -->
+    <header class="page-header">
+
+        <a href="index.html" class="back-link">
+            ← Retour
+        </a>
+
+        <div class="header-content">
+            <span class="eyebrow">Un petit espace rien qu'à nous</span>
+
+            <h1>Parle-moi <em>si...</em></h1>
+
+            <p class="header-description">
+                Il y a des jours où l'on a simplement besoin
+                de quelqu'un. Choisis ce qui te ressemble
+                aujourd'hui.
+            </p>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENU PRINCIPAL
+    ========================== -->
+    <main class="main-content">
+
+        <section class="conversation-section">
+
+            <div class="section-heading">
+                <span class="section-label">À toi de choisir</span>
+
+                <h2>Qu'est-ce qui te ferait du bien ?</h2>
+            </div>
+
+
+            <!-- GRILLE DES BLOCS -->
+            <div class="conversation-grid">
+
+
+                <!-- BLOC 1 : UNE ÉPAULE -->
+                <button
+                    class="conversation-card card-epaule"
+                    data-conversation="epaule"
+                    type="button"
+                >
+
+                    <img
+                        src="assets/images/parle-moi/epaule.jpg"
+                        alt="Une ambiance douce et réconfortante"
+                        class="card-image"
+                    >
+
+                    <div class="card-overlay"></div>
+
+                    <div class="card-content">
+                        <span class="card-number">01</span>
+
+                        <h3>Parle-moi si...</h3>
+
+                        <p>Tu as besoin d'une épaule.</p>
+
+                        <span class="card-action">
+                            Je suis là →
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- BLOC 2 : UN SECRET -->
+                <button
+                    class="conversation-card card-secret"
+                    data-conversation="secret"
+                    type="button"
+                >
+
+                    <img
+                        src="assets/images/parle-moi/secret.jpg"
+                        alt="Une atmosphère mystérieuse et intime"
+                        class="card-image"
+                    >
+
+                    <div class="card-overlay"></div>
+
+                    <div class="card-content">
+                        <span class="card-number">02</span>
+
+                        <h3>Parle-moi si...</h3>
+
+                        <p>Tu as un secret à partager.</p>
+
+                        <span class="card-action">
+                            Entre nous →
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- BLOC 3 : UN PEU DE DOUCEUR -->
+                <button
+                    class="conversation-card card-douceur"
+                    data-conversation="douceur"
+                    type="button"
+                >
+
+                    <img
+                        src="assets/images/parle-moi/douceur.jpg"
+                        alt="Une ambiance romantique et délicate"
+                        class="card-image"
+                    >
+
+                    <div class="card-overlay"></div>
+
+                    <div class="card-content">
+                        <span class="card-number">03</span>
+
+                        <h3>Parle-moi si...</h3>
+
+                        <p>Tu as envie d'un peu de douceur.</p>
+
+                        <span class="card-action">
+                            Un peu de tendresse →
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- BLOC 4 : DANS LE MOOD -->
+                <button
+                    class="conversation-card card-mood"
+                    data-conversation="mood"
+                    type="button"
+                >
+
+                    <img
+                        src="assets/images/parle-moi/mood.jpg"
+                        alt="Une ambiance musicale et spontanée"
+                        class="card-image"
+                    >
+
+                    <div class="card-overlay"></div>
+
+                    <div class="card-content">
+                        <span class="card-number">04</span>
+
+                        <h3>Parle-moi si...</h3>
+
+                        <p>Tu es dans le mood.</p>
+
+                        <span class="card-action">
+                            Fais-moi sourire →
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- BLOC 5 : JUSTE PARLER -->
+                <button
+                    class="conversation-card card-conversation"
+                    data-conversation="conversation"
+                    type="button"
+                >
+
+                    <img
+                        src="assets/images/parle-moi/conversation.jpg"
+                        alt="Une ambiance chaleureuse de conversation"
+                        class="card-image"
+                    >
+
+                    <div class="card-overlay"></div>
+
+                    <div class="card-content">
+                        <span class="card-number">05</span>
+
+                        <h3>Parle-moi si...</h3>
+
+                        <p>Tu veux simplement parler.</p>
+
+                        <span class="card-action">
+                            Je t'écoute →
+                        </span>
+                    </div>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FENÊTRE DE CONVERSATION
+    ========================== -->
+    <div
+        class="chat-modal"
+        id="chatModal"
+        aria-hidden="true"
+    >
+
+        <div class="chat-window">
+
+            <!-- EN-TÊTE DE LA CONVERSATION -->
+            <div class="chat-header">
+
+                <div class="chat-header-info">
+
+                    <span class="chat-status"></span>
+
+                    <div>
+                        <h2 id="chatTitle">Notre conversation</h2>
+
+                        <p id="chatSubtitle">
+                            Un petit moment rien qu'à nous
+                        </p>
+                    </div>
+
+                </div>
+
+                <button
+                    class="close-chat"
+                    id="closeChat"
+                    type="button"
+                    aria-label="Fermer la conversation"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+            <div
+                class="chat-messages"
+                id="chatMessages"
+            >
+
+                <div class="chat-welcome">
+                    <span class="welcome-heart">♡</span>
+
+                    <p id="welcomeMessage">
+                        Tu peux tout me dire.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- ZONE DE SAISIE -->
+            <form
+                class="chat-form"
+                id="chatForm"
+            >
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Écris-moi quelque chose..."
+                    autocomplete="off"
+                    maxlength="2000"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="send-button"
+                    aria-label="Envoyer le message"
+                >
+                    →
+                </button>
+
+            </form>
+
+
+            <!-- AVERTISSEMENT ÉPHÉMÈRE -->
+            <p class="chat-notice">
+                Cette conversation s'envole lorsque tu la quittes.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PIED DE PAGE
+    ========================== -->
+    <footer class="page-footer">
+
+        <p>
+            Un endroit où les mots peuvent être libres.
+        </p>
+
+        <span>Made with ♡ for Laety</span>
+
+    </footer>
+
+<audio id="background-music" loop>
+    <source src="assets/music/romantic.mp4" type="audio/mpeg">
+</audio>
+
+<button id="music-button" class="music-button" aria-label="Activer la musique">
+    ♫
+</button>
+    <!-- JavaScript de la page -->
+    <script src="assets/js/parle-moi.js"></script>
+
+    
+
+</body>
+</html>
